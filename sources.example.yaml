@@ -1,0 +1,25 @@
+sources:
+  gold-price:
+    enabled: true
+    schedule: "0 8 * * *"   # 8 AM daily
+
+  bitcoin-price:
+    enabled: true
+    schedule: "0 */6 * * *" # Every 6 hours
+
+  stock-price:
+    enabled: true
+    schedule: "0 9 * * 1-5" # 9 AM on Vietnamese trading weekdays
+    tickers:
+      - VNM   # Vinamilk
+      - HPG   # Hoa Phat Group
+      - VIC   # Vingroup
+      - VCB   # Vietcombank
+      - FPT   # FPT Corporation
+
+  github-trending:
+    enabled: true
+    schedule: "0 9 * * *"   # 9 AM daily
+    language: ""             # empty = all languages, or e.g. "python"
+    since: "daily"           # daily, weekly, monthly
+    limit: 5
