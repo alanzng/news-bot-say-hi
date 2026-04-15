@@ -8,12 +8,12 @@ SAMPLE_API_RESPONSE = {
     "data": [
         {
             "Id": 1,
-            "TypeName": "Vàng SJC 1L, 10L, 1KG",
+            "TypeName": "Vàng SJC 5 chỉ",
             "BranchName": "Hồ Chí Minh",
             "Buy": "170,000",
             "BuyValue": 170000000.0,
-            "Sell": "173,500",
-            "SellValue": 173500000.0,
+            "Sell": "173,520",
+            "SellValue": 173520000.0,
             "BuyDiffer": None,
             "BuyDifferValue": 0,
             "SellDiffer": None,
@@ -22,7 +22,7 @@ SAMPLE_API_RESPONSE = {
         },
         {
             "Id": 2,
-            "TypeName": "Vàng nhẫn SJC 99,99%",
+            "TypeName": "Vàng nhẫn SJC 99,99% 1 chỉ, 2 chỉ, 5 chỉ",
             "BranchName": "Hồ Chí Minh",
             "Buy": "169,700",
             "BuyValue": 169700000.0,
@@ -36,12 +36,12 @@ SAMPLE_API_RESPONSE = {
         },
         {
             "Id": 3,
-            "TypeName": "Vàng SJC 1L, 10L, 1KG",
+            "TypeName": "Vàng SJC 5 chỉ",
             "BranchName": "Hà Nội",
             "Buy": "170,000",
             "BuyValue": 170000000.0,
-            "Sell": "173,500",
-            "SellValue": 173500000.0,
+            "Sell": "173,520",
+            "SellValue": 173520000.0,
             "BuyDiffer": None,
             "BuyDifferValue": 0,
             "SellDiffer": None,
@@ -64,8 +64,8 @@ def test_fetch_returns_only_hcm_records():
     with patch("src.sources.gold_price.requests.get", return_value=_mock_response(SAMPLE_API_RESPONSE)):
         records = source.fetch()
     assert len(records) == 2
-    assert records[0] == {"type": "Vàng SJC 1L, 10L, 1KG", "buy_price": "170,000", "sell_price": "173,500"}
-    assert records[1] == {"type": "Vàng nhẫn SJC 99,99%", "buy_price": "169,700", "sell_price": "173,200"}
+    assert records[0] == {"type": "Vàng SJC 5 chỉ", "buy_price": "170,000", "sell_price": "173,520"}
+    assert records[1] == {"type": "Vàng nhẫn SJC 99,99% 1 chỉ, 2 chỉ, 5 chỉ", "buy_price": "169,700", "sell_price": "173,200"}
 
 
 def test_fetch_raises_on_non_200():
@@ -100,13 +100,13 @@ def test_fetch_returns_empty_list_when_no_hcm_branch():
 def test_format_produces_header_and_lines():
     source = GoldPriceSource()
     records = [
-        {"type": "Vàng SJC 1L, 10L, 1KG", "buy_price": "170,000", "sell_price": "173,500"},
+        {"type": "Vàng SJC 5 chỉ", "buy_price": "170,000", "sell_price": "173,520"},
     ]
     msg = source.format(records)
     assert "SJC" in msg
-    assert "Vàng SJC 1L, 10L, 1KG" in msg
+    assert "Vàng SJC 5 chỉ" in msg
     assert "170,000" in msg
-    assert "173,500" in msg
+    assert "173,520" in msg
 
 
 def test_format_returns_empty_string_for_empty_records():
