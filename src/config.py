@@ -8,13 +8,17 @@ class ConfigError(Exception):
 
 
 def load_config(config_path: str = "sources.yaml") -> dict:
-    """Load and parse sources.yaml. Raises ConfigError on any problem."""
+    """Load and parse sources.yaml, falling back to sources.example.yaml."""
     path = Path(config_path)
     if not path.exists():
-        raise ConfigError(
-            f"Config file '{config_path}' not found. "
-            "Copy sources.example.yaml to sources.yaml and fill in your values."
-        )
+        fallback = path.parent / "sources.example.yaml"
+        if fallback.exists():
+            path = fallback
+        else:
+            raise ConfigError(
+                f"Config file '{config_path}' not found. "
+                "Copy sources.example.yaml to sources.yaml and fill in your values."
+            )
     try:
         with open(path) as f:
             return yaml.safe_load(f) or {}
