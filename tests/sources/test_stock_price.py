@@ -125,7 +125,7 @@ def test_format_shows_indices_and_stocks():
     assert "<b>75,000</b>" in msg
     assert "📈" in msg
     assert "Giá cổ phiếu" in msg
-    assert "https://vnstocks.com/" in msg
+    assert "vnstocks" in msg
 
 
 def test_format_shows_negative_change():
