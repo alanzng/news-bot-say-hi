@@ -63,6 +63,6 @@ class StockPriceSource(DataSource):
         ]
         parts.extend(row(r) for r in records)
         parts.append("")
-        parts.append("🔗 Nguồn: KBS")
+        parts.append('🔗 Nguồn: <a href="https://vnstocks.com/">vnstocks.com</a>')
 
         return "\n".join(parts)

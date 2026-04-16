@@ -69,6 +69,6 @@ class GitHubTrendingSource(DataSource):
         ]
         lines.extend(row(r) for r in records)
         lines.append("")
-        lines.append("🔗 Nguồn: github.com/trending")
+        lines.append('🔗 Nguồn: <a href="https://github.com/trending">github.com/trending</a>')
 
         return "\n".join(lines)
