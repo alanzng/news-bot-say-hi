@@ -20,7 +20,7 @@ sources:
   kimlong-gold-price:
     enabled: true
     schedule: "0 8 * * *"   # 8 AM daily
-    # product_ids: [1, 2, 8, 3, 4, 5]  # optional, defaults to all
+    # product_ids: [1]  # default: [1] (NHẪN TRƠN & ÉP VĨ). Other IDs: 2, 8, 3, 4, 5
 
   github-trending:
     enabled: true
