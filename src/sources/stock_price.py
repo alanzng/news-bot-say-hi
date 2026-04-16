@@ -27,12 +27,12 @@ class StockPriceSource(DataSource):
             symbol = row.get("symbol", "")
             if not symbol:
                 continue
-            match_price = float(row.get("match_price", 0) or 0)
-            ref_price = float(row.get("ref_price", 0) or 0)
-            change_pct = ((match_price - ref_price) / ref_price * 100) if ref_price else 0.0
+            close_price = float(row.get("close_price", 0) or 0)
+            ref_price = float(row.get("reference_price", 0) or 0)
+            change_pct = float(row.get("percent_change", 0) or 0)
             records.append({
                 "symbol": symbol,
-                "match_price": match_price,
+                "match_price": close_price,
                 "ref_price": ref_price,
                 "change_percent": change_pct,
             })

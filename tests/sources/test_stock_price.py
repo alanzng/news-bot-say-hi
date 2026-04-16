@@ -17,8 +17,8 @@ def test_constructor_raises_if_no_tickers():
 def test_fetch_returns_record_per_ticker():
     source = StockPriceSource(tickers=["VNM", "HPG"])
     df = _mock_price_board([
-        {"symbol": "VNM", "match_price": 75000.0, "ref_price": 74000.0},
-        {"symbol": "HPG", "match_price": 26500.0, "ref_price": 27000.0},
+        {"symbol": "VNM", "close_price": 75000.0, "reference_price": 74000.0, "percent_change": 1.351},
+        {"symbol": "HPG", "close_price": 26500.0, "reference_price": 27000.0, "percent_change": -1.852},
     ])
     mock_stock = MagicMock()
     mock_stock.trading.price_board.return_value = df
@@ -40,7 +40,7 @@ def test_fetch_skips_symbol_missing_from_result():
     source = StockPriceSource(tickers=["VNM", "BADINVALID"])
     # Only VNM returned by the API
     df = _mock_price_board([
-        {"symbol": "VNM", "match_price": 75000.0, "ref_price": 74000.0},
+        {"symbol": "VNM", "close_price": 75000.0, "reference_price": 74000.0, "percent_change": 1.351},
     ])
     mock_stock = MagicMock()
     mock_stock.trading.price_board.return_value = df
