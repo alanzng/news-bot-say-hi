@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 _BASE_URL = "https://bg2.kimlongdongthap.vn/_info.aspx"
 _HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; news-bot/1.0)"}
-_DEFAULT_PRODUCT_IDS = [1, 2, 8, 3, 4, 5]
+_DEFAULT_PRODUCT_IDS = [1]
 
 
 class KimLongGoldPriceSource(DataSource):
