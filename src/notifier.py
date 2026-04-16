@@ -13,7 +13,12 @@ class TelegramNotifier:
         url = f"{self._api_url}/sendMessage"
         resp = requests.post(
             url,
-            json={"chat_id": self._channel_id, "text": text, "parse_mode": parse_mode},
+            json={
+                "chat_id": self._channel_id,
+                "text": text,
+                "parse_mode": parse_mode,
+                "disable_web_page_preview": True,
+            },
             timeout=10,
         )
         data = resp.json()
