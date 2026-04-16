@@ -73,7 +73,7 @@ def test_format_shows_symbol_price_and_change():
     assert "<b>75,000</b>" in msg
     assert "📈" in msg
     assert "Giá cổ phiếu" in msg
-    assert 'href="https://vnstocks.com/"' in msg
+    assert "https://vnstocks.com/" in msg
 
 
 def test_format_shows_negative_change():

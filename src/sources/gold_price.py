@@ -79,6 +79,6 @@ class GoldPriceSource(DataSource):
             parts.extend(row(r) for r in group)
 
         parts.append("")
-        parts.append('🔗 Nguồn: <a href="https://sjc.com.vn">sjc.com.vn</a>')
+        parts.append("🔗 Nguồn: sjc.com.vn (https://sjc.com.vn)")
 
         return "\n".join(parts)
