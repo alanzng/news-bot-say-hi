@@ -53,10 +53,21 @@ class GitHubTrendingSource(DataSource):
         if not records:
             return ""
         label = _PERIOD_LABELS.get(self.since, self.since)
-        lines = [f"GitHub Trending ({label})"]
-        for r in records:
-            lang = f" [{r['language']}]" if r["language"] else ""
-            lines.append(f"{r['rank']}. {r['repo']}{lang} *{r['stars']}")
+
+        def row(r: dict) -> str:
+            parts = [f"{r['rank']}. <b>{r['repo']}</b> ⭐ {r['stars']}"]
+            if r["language"]:
+                parts.append(f"   🔤 {r['language']}")
             if r["description"]:
-                lines.append(f"   {r['description']}")
+                parts.append(f"   {r['description']}")
+            return "\n".join(parts)
+
+        lines = [
+            f"🐙 <b>GitHub Trending</b> ({label})",
+            "",
+        ]
+        lines.extend(row(r) for r in records)
+        lines.append("")
+        lines.append("🔗 Nguồn: github.com/trending")
+
         return "\n".join(lines)

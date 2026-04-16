@@ -32,8 +32,13 @@ class BitcoinPriceSource(DataSource):
         r = records[0]
         change = r["price_change_24h"]
         sign = "+" if change >= 0 else ""
-        return (
-            f"Bitcoin Price\n"
-            f"BTC/USD: ${r['price_usd']:,.2f}\n"
-            f"24h Change: {sign}{change:.2f}%"
-        )
+        trend = "📈" if change >= 0 else "📉"
+
+        return "\n".join([
+            "₿ <b>Bitcoin Price</b>",
+            "",
+            f"💰 BTC/USD: <b>${r['price_usd']:,.2f}</b>",
+            f"📊 24h: <b>{sign}{change:.2f}%</b> {trend}",
+            "",
+            "🔗 Nguồn: coingecko.com",
+        ])
