@@ -55,7 +55,8 @@ class GitHubTrendingSource(DataSource):
         label = _PERIOD_LABELS.get(self.since, self.since)
 
         def row(r: dict) -> str:
-            parts = [f"{r['rank']}. <b>{r['repo']}</b> ⭐ {r['stars']}"]
+            repo_url = f"https://github.com/{r['repo']}"
+            parts = [f"{r['rank']}. <a href=\"{repo_url}\"><b>{r['repo']}</b></a> ⭐ {r['stars']}"]
             if r["language"]:
                 parts.append(f"   🔤 {r['language']}")
             if r["description"]:

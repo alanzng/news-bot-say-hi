@@ -74,7 +74,7 @@ def test_format_shows_header_and_repos():
     ]
     msg = source.format(records)
     assert "<b>GitHub Trending</b>" in msg
-    assert "<b>owner/repo-one</b>" in msg
+    assert '<a href="https://github.com/owner/repo-one"><b>owner/repo-one</b></a>' in msg
     assert "⭐" in msg
     assert "1,234" in msg
     assert "Python" in msg

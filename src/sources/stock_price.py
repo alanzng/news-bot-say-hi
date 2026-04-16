@@ -1,5 +1,5 @@
 import logging
-from vnstock3 import Vnstock
+from vnstock import Vnstock
 from src.base import DataSource
 
 logger = logging.getLogger(__name__)
@@ -16,7 +16,7 @@ class StockPriceSource(DataSource):
 
     def fetch(self) -> list[dict]:
         try:
-            stock = Vnstock().stock(symbol=self.tickers[0], source="VCI")
+            stock = Vnstock().stock(symbol=self.tickers[0], source="KBS")
             df = stock.trading.price_board(self.tickers)
         except Exception as exc:
             logger.error("[stock-price] failed to fetch price board: %s", exc)
@@ -63,6 +63,6 @@ class StockPriceSource(DataSource):
         ]
         parts.extend(row(r) for r in records)
         parts.append("")
-        parts.append("🔗 Nguồn: VCI")
+        parts.append("🔗 Nguồn: KBS")
 
         return "\n".join(parts)
