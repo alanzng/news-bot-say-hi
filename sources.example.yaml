@@ -17,6 +17,11 @@ sources:
       - VCB   # Vietcombank
       - FPT   # FPT Corporation
 
+  kimlong-gold-price:
+    enabled: true
+    schedule: "0 8 * * *"   # 8 AM daily
+    # product_ids: [1, 2, 8, 3, 4, 5]  # optional, defaults to all
+
   github-trending:
     enabled: true
     schedule: "0 9 * * *"   # 9 AM daily

@@ -8,6 +8,7 @@ from src.registry import SourceRegistry
 from src.sources.bitcoin_price import BitcoinPriceSource
 from src.sources.github_trending import GitHubTrendingSource
 from src.sources.gold_price import GoldPriceSource
+from src.sources.kimlong_gold_price import KimLongGoldPriceSource
 from src.sources.stock_price import StockPriceSource
 
 logging.basicConfig(
@@ -32,6 +33,9 @@ def _build_sources(config: dict) -> list:
         "gold-price": lambda: GoldPriceSource(),
         "bitcoin-price": lambda: BitcoinPriceSource(),
         "stock-price": lambda: StockPriceSource(tickers=cfg("stock-price").get("tickers", [])),
+        "kimlong-gold-price": lambda: KimLongGoldPriceSource(
+            product_ids=cfg("kimlong-gold-price").get("product_ids", None)
+        ),
         "github-trending": lambda: GitHubTrendingSource(
             language=cfg("github-trending").get("language", ""),
             since=cfg("github-trending").get("since", "daily"),
