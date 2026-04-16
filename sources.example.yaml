@@ -15,7 +15,7 @@ sources:
       - MBB
       - SSI
       - E1VFVN30
-      - VNI
+      - VNINDEX
 
   kimlong-gold-price:
     enabled: true
