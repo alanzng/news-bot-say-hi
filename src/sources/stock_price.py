@@ -122,6 +122,6 @@ class StockPriceSource(DataSource):
             parts.extend(fmt_stock(r) for r in stocks)
             parts.append("")
 
-        parts.append("🔗 Nguồn: vnstocks.com (https://vnstocks.com/)")
+        parts.append("🔗 Nguồn: <a href=\"https://vnstocks.com\">vnstocks</a>")
 
         return "\n".join(parts)

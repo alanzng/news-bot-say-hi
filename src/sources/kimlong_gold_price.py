@@ -80,6 +80,5 @@ class KimLongGoldPriceSource(DataSource):
         ]
         parts.extend(row(r) for r in records)
         parts.append("")
-        parts.append("🔗 Nguồn: kimlongdongthap.vn (https://kimlongdongthap.vn)")
-
+        parts.append("🔗 Nguồn: <a href=\"https://kimlongdongthap.vn\">kimlongdongthap</a>")
         return "\n".join(parts)

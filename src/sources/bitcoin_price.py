@@ -40,5 +40,5 @@ class BitcoinPriceSource(DataSource):
             f"💰 BTC/USD: <b>${r['price_usd']:,.2f}</b>",
             f"📊 24h: <b>{sign}{change:.2f}%</b> {trend}",
             "",
-            "🔗 Nguồn: coingecko.com (https://www.coingecko.com)",
+            "🔗 Nguồn: <a href=\"https://www.coingecko.com\">coingecko.com</a>"
         ])
