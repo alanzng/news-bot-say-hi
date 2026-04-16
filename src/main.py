@@ -1,5 +1,4 @@
 import logging
-import os
 from dotenv import load_dotenv
 
 from src.config import ConfigError, load_config, load_secrets
