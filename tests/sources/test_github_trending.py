@@ -73,9 +73,22 @@ def test_format_shows_header_and_repos():
         {"rank": 1, "repo": "owner/repo-one", "description": "Cool project", "language": "Python", "stars": "1,234"},
     ]
     msg = source.format(records)
-    assert "GitHub Trending" in msg
-    assert "owner/repo-one" in msg
+    assert "<b>GitHub Trending</b>" in msg
+    assert "<b>owner/repo-one</b>" in msg
+    assert "⭐" in msg
     assert "1,234" in msg
+    assert "Python" in msg
+    assert "github.com" in msg
+
+
+def test_format_hides_language_when_empty():
+    source = GitHubTrendingSource()
+    records = [
+        {"rank": 1, "repo": "user/repo", "description": "", "language": "", "stars": "500"},
+    ]
+    msg = source.format(records)
+    assert "<b>user/repo</b>" in msg
+    assert "🔤" not in msg
 
 
 def test_format_returns_empty_string_for_empty_records():

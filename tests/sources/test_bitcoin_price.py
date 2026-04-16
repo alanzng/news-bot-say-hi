@@ -37,15 +37,19 @@ def test_format_shows_price_and_change():
     source = BitcoinPriceSource()
     records = [{"symbol": "BTC", "price_usd": 65000.0, "price_change_24h": 2.5}]
     msg = source.format(records)
-    assert "65,000.00" in msg
-    assert "+2.50%" in msg
+    assert "<b>$65,000.00</b>" in msg
+    assert "<b>+2.50%</b>" in msg
+    assert "📈" in msg
+    assert "Bitcoin" in msg
+    assert "coingecko" in msg
 
 
 def test_format_shows_negative_change():
     source = BitcoinPriceSource()
     records = [{"symbol": "BTC", "price_usd": 60000.0, "price_change_24h": -1.3}]
     msg = source.format(records)
-    assert "-1.30%" in msg
+    assert "<b>-1.30%</b>" in msg
+    assert "📉" in msg
 
 
 def test_format_returns_empty_string_for_empty_records():

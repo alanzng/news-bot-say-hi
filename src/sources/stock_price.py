@@ -48,11 +48,21 @@ class StockPriceSource(DataSource):
     def format(self, records: list[dict]) -> str:
         if not records:
             return ""
-        lines = ["Gia co phieu Viet Nam"]
-        for r in records:
+
+        def row(r: dict) -> str:
             sign = "+" if r["change_percent"] >= 0 else ""
-            lines.append(
-                f"- {r['symbol']}: {r['match_price']:,.0f} VND "
-                f"({sign}{r['change_percent']:.2f}%)"
+            trend = "📈" if r["change_percent"] >= 0 else "📉"
+            return (
+                f"  • <b>{r['symbol']}</b>: <b>{r['match_price']:,.0f}</b> VNĐ"
+                f" {trend} {sign}{r['change_percent']:.2f}%"
             )
-        return "\n".join(lines)
+
+        parts = [
+            "📈 <b>Giá cổ phiếu Việt Nam</b>",
+            "",
+        ]
+        parts.extend(row(r) for r in records)
+        parts.append("")
+        parts.append("🔗 Nguồn: VCI")
+
+        return "\n".join(parts)

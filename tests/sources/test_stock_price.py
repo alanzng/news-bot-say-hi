@@ -69,15 +69,18 @@ def test_format_shows_symbol_price_and_change():
     source = StockPriceSource(tickers=["VNM"])
     records = [{"symbol": "VNM", "match_price": 75000.0, "ref_price": 74000.0, "change_percent": 1.35}]
     msg = source.format(records)
-    assert "VNM" in msg
-    assert "75,000" in msg
-    assert "+1.35%" in msg
+    assert "<b>VNM</b>" in msg
+    assert "<b>75,000</b>" in msg
+    assert "📈" in msg
+    assert "Giá cổ phiếu" in msg
+    assert "VCI" in msg
 
 
 def test_format_shows_negative_change():
     source = StockPriceSource(tickers=["HPG"])
     records = [{"symbol": "HPG", "match_price": 26500.0, "ref_price": 27000.0, "change_percent": -1.85}]
     msg = source.format(records)
+    assert "📉" in msg
     assert "-1.85%" in msg
 
 
