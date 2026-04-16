@@ -1,5 +1,4 @@
-import pytest
-from unittest.mock import MagicMock, patch, call
+from unittest.mock import MagicMock
 from src.base import DataSource
 from src.registry import SourceRegistry
 

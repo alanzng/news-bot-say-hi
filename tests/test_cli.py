@@ -1,4 +1,4 @@
-from unittest.mock import patch, MagicMock
+from unittest.mock import MagicMock
 import pytest
 from src.cli import run_source, get_source_by_name
 

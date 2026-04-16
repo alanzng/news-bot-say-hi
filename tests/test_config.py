@@ -1,7 +1,4 @@
-import os
 import pytest
-import yaml
-from pathlib import Path
 from src.config import load_config, load_secrets, ConfigError
 
 
