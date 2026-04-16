@@ -60,4 +60,26 @@ class KimLongGoldPriceSource(DataSource):
     def format(self, records: list[dict]) -> str:
         if not records:
             return ""
-        return ""  # placeholder — implemented in Task 2
+
+        def trend_icon(trend: str) -> str:
+            return "📈" if trend == "up" else "📉" if trend == "down" else ""
+
+        def row(r: dict) -> str:
+            buy_trend = trend_icon(r.get("buy_trend", ""))
+            sell_trend = trend_icon(r.get("sell_trend", ""))
+            return (
+                f"  • {r['name']} ({r['label']} - {r['purity']})\n"
+                f"    🟢 Mua <b>{r['buy_price']}</b> {buy_trend}"
+                f" | 🔴 Bán <b>{r['sell_price']}</b> {sell_trend}"
+            )
+
+        parts = [
+            "💍 <b>Giá vàng Kim Long Đồng Tháp</b>",
+            "📍 Đơn vị: VNĐ/chỉ",
+            "",
+        ]
+        parts.extend(row(r) for r in records)
+        parts.append("")
+        parts.append("🔗 Nguồn: kimlongdongthap.vn")
+
+        return "\n".join(parts)

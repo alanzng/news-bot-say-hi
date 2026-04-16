@@ -62,3 +62,54 @@ def test_name_and_default_schedule():
     source = KimLongGoldPriceSource()
     assert source.name == "kimlong-gold-price"
     assert source.default_schedule == "0 8 * * *"
+
+
+SAMPLE_RECORDS = [
+    {
+        "id": "1", "name": "NHẪN TRƠN & ÉP VĨ", "label": "9999",
+        "purity": "999", "buy_price": "15.700.000", "sell_price": "16.000.000",
+        "buy_trend": "up", "sell_trend": "up",
+    },
+    {
+        "id": "2", "name": "NỮ TRANG KIM LONG", "label": "KLJ24K",
+        "purity": "990", "buy_price": "15.400.000", "sell_price": "15.900.000",
+        "buy_trend": "up", "sell_trend": "down",
+    },
+]
+
+
+def test_format_returns_empty_for_no_records():
+    source = KimLongGoldPriceSource()
+    assert source.format([]) == ""
+
+
+def test_format_contains_header():
+    source = KimLongGoldPriceSource()
+    result = source.format(SAMPLE_RECORDS)
+    assert "Kim Long Đồng Tháp" in result
+
+
+def test_format_contains_product_name():
+    source = KimLongGoldPriceSource()
+    result = source.format(SAMPLE_RECORDS)
+    assert "NHẪN TRƠN" in result
+    assert "NỮ TRANG KIM LONG" in result
+
+
+def test_format_contains_bold_prices():
+    source = KimLongGoldPriceSource()
+    result = source.format(SAMPLE_RECORDS)
+    assert "<b>15.700.000</b>" in result
+    assert "<b>16.000.000</b>" in result
+
+
+def test_format_contains_trend_arrows():
+    source = KimLongGoldPriceSource()
+    result = source.format(SAMPLE_RECORDS)
+    assert "📈" in result
+
+
+def test_format_contains_source_link():
+    source = KimLongGoldPriceSource()
+    result = source.format(SAMPLE_RECORDS)
+    assert "kimlongdongthap" in result
