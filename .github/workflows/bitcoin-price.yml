@@ -2,7 +2,7 @@ name: Bitcoin Price
 
 on:
   schedule:
-    - cron: "0 */6 * * *"  # Every 6 hours
+    - cron: "0 1 * * *"  # 8 AM Vietnam (UTC+7)
   workflow_dispatch:
 
 jobs:
