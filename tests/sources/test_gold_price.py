@@ -103,10 +103,10 @@ def test_format_produces_header_and_lines():
         {"type": "Vàng SJC 5 chỉ", "buy_price": "170,000", "sell_price": "173,520"},
     ]
     msg = source.format(records)
-    assert "SJC" in msg
+    assert "Giá vàng SJC hôm nay" in msg
     assert "Vàng SJC 5 chỉ" in msg
-    assert "170,000" in msg
-    assert "173,520" in msg
+    assert "<b>170,000</b>" in msg
+    assert "<b>173,520</b>" in msg
 
 
 def test_format_returns_empty_string_for_empty_records():

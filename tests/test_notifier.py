@@ -48,7 +48,7 @@ def test_send_message_passes_parse_mode():
     with patch("src.notifier.requests.post", return_value=mock_resp) as mock_post:
         notifier.send_message("hello", parse_mode="HTML")
 
-    _, kwargs = mock_post.call_args[0][0], mock_post.call_args[1]
+    kwargs = mock_post.call_args[1]
     assert kwargs["json"]["parse_mode"] == "HTML"
 
 
@@ -60,5 +60,5 @@ def test_send_message_defaults_to_html_parse_mode():
     with patch("src.notifier.requests.post", return_value=mock_resp) as mock_post:
         notifier.send_message("hello")
 
-    _, kwargs = mock_post.call_args[0][0], mock_post.call_args[1]
+    kwargs = mock_post.call_args[1]
     assert kwargs["json"]["parse_mode"] == "HTML"
