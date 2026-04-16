@@ -11,11 +11,11 @@ sources:
     enabled: true
     schedule: "0 9 * * 1-5" # 9 AM on Vietnamese trading weekdays
     tickers:
-      - VNM   # Vinamilk
-      - HPG   # Hoa Phat Group
-      - VIC   # Vingroup
-      - VCB   # Vietcombank
-      - FPT   # FPT Corporation
+      - HPG
+      - MBB
+      - SSI
+      - E1VFVN30
+      - VNI
 
   kimlong-gold-price:
     enabled: true
