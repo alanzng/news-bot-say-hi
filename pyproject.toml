@@ -3,9 +3,12 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.backends.legacy:build"
 
 [project]
-name = "my-news-bot"
+name = "news-bot-say-hi"
 version = "0.1.0"
+description = "Scheduled Telegram bot that pushes Vietnamese market data (stocks, gold, crypto) and GitHub trending to a channel."
 requires-python = ">=3.11"
+readme = "README.md"
+license = { text = "MIT" }
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
