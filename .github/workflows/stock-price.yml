@@ -2,7 +2,7 @@ name: Stock Price
 
 on:
   schedule:
-    - cron: "0 2 * * 1-5"  # 9 AM Vietnam (UTC+7) on weekdays
+    - cron: "0 8 * * 1-5"  # 15 PM Vietnam (UTC+7) on weekdays
   workflow_dispatch:
 
 jobs:
