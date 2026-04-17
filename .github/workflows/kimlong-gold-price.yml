@@ -2,7 +2,7 @@ name: Gold Price (Kim Long)
 
 on:
   schedule:
-    - cron: "0 1 * * *"  # 8 AM Vietnam (UTC+7)
+    - cron: "10 1 * * *"  # 8:10 AM Vietnam (UTC+7)
   workflow_dispatch:
 
 jobs:
