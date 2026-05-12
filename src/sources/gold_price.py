@@ -6,7 +6,13 @@ from src.base import DataSource
 logger = logging.getLogger(__name__)
 
 _URL = "https://sjc.com.vn/GoldPrice/Services/PriceService.ashx"
-_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; news-bot/1.0)"}
+_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+    "Referer": "https://sjc.com.vn/",
+    "Origin": "https://sjc.com.vn",
+    "Accept": "application/json, text/javascript, */*; q=0.01",
+    "X-Requested-With": "XMLHttpRequest",
+}
 _BRANCH = "Hồ Chí Minh"
 
 _ALLOWED_TYPES = {
